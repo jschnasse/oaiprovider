@@ -1,4 +1,3 @@
-
 package fedora.services.oaiprovider;
 
 import java.io.*;
@@ -281,7 +280,7 @@ public class FedoraOAIDriver
             }
             String xml =
                     buf.toString().replaceAll("\\s*<\\?xml.*?\\?>\\s*", "");
-            if ((dissURI.split("/").length == 3) && (dissURI.endsWith("/DC"))) {
+        	if ((dissURI.split("/").length == 3) && (dissURI.endsWith("/DC")) && !xml.contains(_XSI_DECLARATION)) {
                 // If it's a DC datastream dissemination, inject the
                 // xsi:schemaLocation attribute if needed
                 if (xml.indexOf(_XSI_URI) == -1) {
